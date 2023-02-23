@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Discord 嵌入生成器</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether-theme-arrows-dark.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/dark.min.css'>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/><a class="patreon-link" href="https://discord.gg/ewfqtf72Zf" target="_blank">
+  <div class="badge-container">
+    <div class="badge-text">有任何問題?</div>
+    <div class="badge-icon"></div>
+    <div class="badge-text badge-text-bottom">加入群組!</div>
+  </div></a>
+<div class="container">
+  <div class="col-md-10 offset-md-1">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-header">嵌入編輯器</div>
+        <div class="card-block">
+          <form id="form">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="useVars" value="">
+                  使用變量（將跳過字段檢查並直接添加不帶雙引號的名稱）
+                </label>
+              </div>
+            <div class="form-group">
+              <label>標題設定</label>
+              <input class="form-control" id="title" type="text" placeholder="標題"/>
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="description" type="text" placeholder="說明"/>
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="url" type="text" placeholder="連結"/>
+            </div>
+            <div class="form-group">
+              <label>顏色</label>
+              <input class="form-control" id="color" type="color"/>
+            </div>
+            <div class="form-group">
+              <label>縮圖設定</label>
+              <input class="form-control" id="icon" type="text" placeholder="圖片連結"/>
+            </div>
+            <div class="form-group">
+              <label>作者設定</label>
+              <input class="form-control" id="author_name" type="text" placeholder="作者名稱"/>
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="author_url" type="text" placeholder="作者連結"/>
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="author_icon" type="text" placeholder="作者圖片連結"/>
+            </div>
+            <div class="form-group">
+              <label>字段</label>
+            </div>
+            <div class="input-fields"></div>
+            <div class="form-group">
+              <label>頁角設定</label>
+              <input class="form-control" id="footer" type="text" placeholder="頁角文字"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div><br/>
+  <div class="col-md-8 offset-md-2">         
+    <div class="card">
+      <div class="card-header">嵌入預覽</div>
+      <div class="card-block preview">
+        <div class="wrapper">
+          <div class="side-colored"></div>
+          <div class="card embed">
+            <div class="card-block">
+              <div class="embed-inner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br/>
+  <div class="col-md-10 offset-md-1">
+    <div class="card">
+      <div class="card-header">Python 程式碼</div>
+      <div class="card-block">
+        <pre><code class="python source"></code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src='https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
