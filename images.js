@@ -1,2 +1,2 @@
-const imgList = ["image/20260702/report_capital_NEW_2026-07-02.png", "image/20260702/report_capital_STRONG_2026-07-02.png", "image/20260702/report_capital_USAA_2026-07-02.png", "image/20260702/report_cathay_EA_2026-07-02.png", "image/20260702/report_uni_49YTW_2026-07-02.png", "image/20260702/report_uni_61YTW_2026-07-02.png", "image/20260702/report_uni_63YTW_2026-07-02.png"];
-const reportDate = '20260702';
+const imgList = ["image\\20260703\\TWII_20260703.png"];
+const reportDate = '20260703';
