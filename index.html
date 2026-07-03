@@ -41,22 +41,20 @@
     </script>
     
     <div id="loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white">
-    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
-    <p class="text-gray-500 font-medium animate-pulse">正在為您準備籌碼數據...</p>
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+        <p class="text-gray-500 font-medium animate-pulse">正在為您準備籌碼數據...</p>
     </div>
-<script>
-    window.addEventListener('load', function() {
-        const loader = document.getElementById('loader');
-        // 增加一點淡出效果，讓過渡更平滑
-        loader.style.transition = "opacity 0.5s ease";
-        loader.style.opacity = "0";
-        
-        // 0.5 秒後徹底從 DOM 中移除
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
-    });
-</script>
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.style.transition = "opacity 0.5s ease";
+            loader.style.opacity = "0";
+            
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        });
+    </script>
     <header class="bg-white shadow-xs border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 w-full md:w-auto">
@@ -80,11 +78,51 @@
 
     <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
         <div class="bg-white p-6 rounded-2xl shadow-xs border border-gray-100 mb-8">
-            <h2 class="text-lg font-semibold text-gray-900 mb-2">💡 觀測站說明</h2>
-            <p class="text-sm text-gray-600 leading-relaxed">
-                本網頁每日盤後全自動同步最新投信持股異動與 K 線籌碼圖表。
-                請密切關注折溢價偏離度（<span class="text-red-500 font-medium">正溢價</span>代表市價過高，請留意買貴風險；<span class="text-green-600 font-medium">負折價</span>代表市價便宜），以輔助您的主動式投資決策。
-            </p>
+            <!-- 標題 -->
+            <h2 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <span>💡</span> 觀測站說明
+            </h2>
+            
+            <!-- 內容區 -->
+            <div class="text-base text-gray-600 space-y-4 leading-relaxed">
+                <p>
+                    本網頁每日盤後 <span class="font-semibold text-gray-800">18:30</span> 全自動同步最新投信持股異動圖表，並整合當日加權收盤指數與櫃買指數資訊，便於您與整體市場脈動同步檢視。
+                </p>
+
+                <!-- 折溢價輔助說明區 -->
+                <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-3.5 text-base text-blue-800">
+                    <span class="font-semibold block mb-1">📊 折溢價觀察指引：</span>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><span class="text-red-600 font-semibold">正溢價</span>：代表市價過高，請留意買貴風險。</li>
+                        <li><span class="text-green-700 font-semibold">負折價</span>：代表市價相對便宜，可輔助您做出更精準的主動式投資決策。</li>
+                    </ul>
+                </div>
+
+                <!-- ⚠️ 你要求的全新加註提示區 -->
+                <div class="bg-amber-50/80 border border-amber-200/70 rounded-xl p-3.5 text-base text-amber-800 flex items-start gap-2">
+                    <span class="text-base leading-none">⚠️</span>
+                    <div>
+                        <span class="font-bold block text-amber-900 mb-0.5">重要提示</span>
+                        閱讀圖表數據時，請務必核對並確定<span class="underline font-semibold text-amber-900 mx-0.5">網頁上方同步的日期</span>與<span class="underline font-semibold text-amber-900 mx-0.5">圖表右下角的產製日期</span>是否一致，以確保資料為最新狀態。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-xs border border-gray-100 mb-8">
+            <h2 class="text-lg font-semibold text-gray-900 mb-2">📈 市場指數</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
+                <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                    <p class="text-gray-500 mb-2">加權收盤指數</p>
+                    <p id="market-index-twii" class="text-2xl font-semibold">--</p>
+                    <p id="market-index-twii-change" class="text-xs text-gray-500">資料尚未整合</p>
+                </div>
+                <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                    <p class="text-gray-500 mb-2">櫃買收盤指數</p>
+                    <p id="market-index-otc" class="text-2xl font-semibold">--</p>
+                    <p id="market-index-otc-change" class="text-xs text-gray-500">資料尚未整合</p>
+                </div>
+            </div>
         </div>
 
         <div class="mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -115,11 +153,19 @@
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-gray-600">
                 <span>📧 聯絡信箱：support@98004008.xyz</span>
             </div>
-            <div class="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-600">
-                <div class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5">
+            <div class="flex flex-wrap items-center justify-center gap-3 text-2xl text-gray-600">
+                <div class="rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5">
                     <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fetf.98004008.xyz%2F&label=%E7%B6%B2%E7%AB%99%E7%80%8F%E8%A6%BD%E6%AC%A1%E6%95%B8&icon=collection-fill&color=%23fff&message=&style=flat-square&tz=ROC">
                 </div>
             </div>
+            
+            <!-- 💬 意見回饋觸發按鈕 -->
+            <div class="pt-2">
+                <button onclick="openFeedbackModal()" class="inline-flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800 text-lg font-semibold px-4 py-2 rounded-full shadow-xs transition-all duration-200 cursor-pointer border border-gray-200">
+                    <span>💬</span> 填寫意見回饋
+                </button>
+            </div>
+
             <p>本報表數據由自動化運算腳本繪製，不構成任何實質投資買賣建議。</p>
             <p>Copyright © 2026 By YST.Lab.ETF All rights reserved.</p>
         </div>
@@ -142,9 +188,9 @@
         </div>
     </div>
 
+    <!-- 📬 訂閱電子報彈出視窗 -->
     <div id="subscribe-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-xs">
         <div class="bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden p-6 relative">
-            
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-semibold cursor-pointer">&times;</button>
             
             <div id="modal-content-wrapper">
@@ -169,13 +215,53 @@
         </div>
     </div>
 
+    <!-- ─── 💬 意見回饋彈出視窗 ─── -->
+    <div id="feedback-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-xs">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden p-6 relative">
+            <button onclick="closeFeedbackModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-semibold cursor-pointer">&times;</button>
+            
+            <div id="feedback-modal-wrapper">
+                <div class="text-center mb-6">
+                    <span class="text-4xl">💬</span>
+                    <h3 class="font-bold text-xl text-gray-900 mt-2">意見回饋</h3>
+                    <p class="text-xs text-gray-500 mt-1">您的建議是我們持續優化觀測站的最大動力！</p>
+                </div>
+
+                <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-4 text-left">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">您的暱稱（選填）</label>
+                            <input type="text" id="feedback-name" placeholder="例如：藍色籌碼迷" 
+                                class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">回饋類型</label>
+                            <select id="feedback-type" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-gray-700">
+                                <option value="功能建議">💡 功能建議</option>
+                                <option value="錯誤回報">🐛 錯誤回報 (Bug)</option>
+                                <option value="內容諮詢">✉️ 其他意見</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">回饋內容</label>
+                        <textarea id="feedback-content" required rows="4" placeholder="請輸入您寶貴的意見內容..." 
+                            class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="feedback-submit-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors shadow-xs cursor-pointer">
+                        送出回饋
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="images.js"></script>
 
     <script>
         // ─── 💡 Google 表單參數設定區 ───
-        // 1. 請在此填入你在步驟一拿到、結尾為 /formResponse 的網址
         const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScumTBfhManmj8o96GBQ25L-71Zx2tv7e1TJvvtSO22RLgE8g/formResponse";
-        // 2. 請在此填入你的 Email 輸入框在 Google 表單中的 entry ID
         const GOOGLE_FORM_ENTRY_ID = "entry.1485362758"; 
         // ───────────────────────────────
 
@@ -187,7 +273,6 @@
         function closeModal() {
             document.getElementById('subscribe-modal').classList.add('hidden');
             document.body.style.overflow = '';
-            // 延遲重設表單，讓關閉動畫平滑
             setTimeout(() => {
                 document.getElementById('modal-content-wrapper').innerHTML = `
                     <div class="text-center mb-6">
@@ -206,7 +291,6 @@
             }, 300);
         }
 
-        // 異步傳送資料至 Google Forms 邏輯
         function submitEmail(e) {
             e.preventDefault();
             const emailInput = document.getElementById('subscriber-email').value;
@@ -216,11 +300,9 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "正在處理中...";
 
-            // 封裝表單數據
             const formData = new FormData();
             formData.append(GOOGLE_FORM_ENTRY_ID, emailInput);
 
-            // 利用 fetch 把資料悄悄丟給 Google Forms (使用 no-cors 模式避免跨域安全阻擋)
             fetch(GOOGLE_FORM_ACTION, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -244,9 +326,107 @@
             });
         }
 
+        // ─── 💬 意見回饋視窗控制與提交邏輯 ───
+        function openFeedbackModal() {
+            document.getElementById('feedback-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById('feedback-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                document.getElementById('feedback-modal-wrapper').innerHTML = `
+                    <div class="text-center mb-6">
+                        <span class="text-4xl">💬</span>
+                        <h3 class="font-bold text-xl text-gray-900 mt-2">意見回饋</h3>
+                        <p class="text-xs text-gray-500 mt-1">您的建議是我們持續優化觀測站的最大動力！</p>
+                    </div>
+                    <form id="feedback-form" onsubmit="submitFeedback(event)" class="space-y-4 text-left">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">您的暱稱（選填）</label>
+                                <input type="text" id="feedback-name" placeholder="例如：藍色籌碼迷" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">回饋類型</label>
+                                <select id="feedback-type" class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-gray-700">
+                                    <option value="功能建議">💡 功能建議</option>
+                                    <option value="錯誤回報">🐛 錯誤回報 (Bug)</option>
+                                    <option value="內容諮詢">✉️ 其他意見</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">回饋內容</label>
+                            <textarea id="feedback-content" required rows="4" placeholder="請輸入您寶貴的意見內容..." class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" id="feedback-submit-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors shadow-xs cursor-pointer">送出回饋</button>
+                    </form>
+                `;
+            }, 300);
+        }
+
+// ─── 💬 意見回饋 Google 表單參數設定區 ───
+        // ⚠️ 請把下面四行引號內的內容，換成你剛剛抓到的真實 ID
+        const FEEDBACK_FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScGEk19e4XAhtteDzzodpYTPNYsem7zVPd23XFvvkd7ioClIA/formResponse";
+        const ENTRY_NAME = "entry.974395954";    // 對應「暱稱」的 ID
+        const ENTRY_TYPE = "entry.950952284";    // 對應「回饋類型」的 ID
+        const ENTRY_CONTENT = "entry.1168896480"; // 對應「回饋內容」的 ID
+        // ─────────────────────────────────────
+
+        function submitFeedback(e) {
+            e.preventDefault();
+            
+            // 抓取網頁上使用者輸入的值
+            const nameValue = document.getElementById('feedback-name').value || '匿名訪客';
+            const typeValue = document.getElementById('feedback-type').value;
+            const contentValue = document.getElementById('feedback-content').value;
+            
+            const submitBtn = document.getElementById('feedback-submit-btn');
+            const wrapper = document.getElementById('feedback-modal-wrapper');
+
+            // 按鈕變為發送中狀態，防止重複點擊
+            submitBtn.disabled = true;
+            submitBtn.innerText = "正在送出...";
+
+            // 打包資料
+            const formData = new FormData();
+            formData.append(ENTRY_NAME, nameValue);
+            formData.append(ENTRY_TYPE, typeValue);
+            formData.append(ENTRY_CONTENT, contentValue);
+
+            // 送出到 Google 表單
+            fetch(FEEDBACK_FORM_ACTION, {
+                method: 'POST',
+                mode: 'no-cors', // 避開跨網域 CORS 阻擋
+                body: formData
+            }).then(() => {
+                // 送出成功後，替換成成功動畫與訊息
+                wrapper.innerHTML = `
+                    <div class="text-center py-6 img-fade-in">
+                        <span class="text-5xl text-green-500">🎉</span>
+                        <h3 class="font-bold text-xl text-gray-900 mt-4">送出成功！</h3>
+                        <p class="text-sm text-gray-500 mt-2">感謝您的回饋，我們會參考您的建議持續優化。</p>
+                        <button onclick="closeFeedbackModal()" class="mt-6 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold px-6 py-2 rounded-xl transition-colors cursor-pointer">
+                            關閉視窗
+                        </button>
+                    </div>
+                `;
+            }).catch((err) => {
+                // 如果失敗的處理
+                alert("抱歉，目前網路異常，請稍後再試！");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "送出回饋";
+            });
+        }
+
         window.onclick = function(event) {
-            const modal = document.getElementById('subscribe-modal');
-            if (event.target === modal) { closeModal(); }
+            const subscribeModal = document.getElementById('subscribe-modal');
+            const feedbackModal = document.getElementById('feedback-modal');
+            
+            if (event.target === subscribeModal) { closeModal(); }
+            if (event.target === feedbackModal) { closeFeedbackModal(); }
         }
 
         function openLightbox(imgPath, title = '') {
@@ -295,6 +475,18 @@
                 return `${reportDate.substring(0, 4)}-${reportDate.substring(4, 6)}-${reportDate.substring(6, 8)}`;
             }
             return reportDate;
+        }
+
+        function makeChangeHtml(changeVal, pctVal) {
+            if (changeVal === null || changeVal === undefined) return '--';
+            const num = Number(changeVal);
+            const pct = Number(pctVal);
+            const isUp = num > 0;
+            const isDown = num < 0;
+            const arrow = isUp ? '▲' : (isDown ? '▼' : '');
+            const colorClass = isUp ? 'text-red-600' : (isDown ? 'text-green-600' : 'text-gray-600');
+            const sign = isUp ? '+' : '';
+            return `<span class="${colorClass} font-medium">${arrow} ${sign}${num.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})} (${pct>0?'+':''}${pct}%)</span>`;
         }
 
         function getSelectorValues(list) {
@@ -383,6 +575,26 @@
                 updateDateDisplay(reportDate);
                 populateSelector(imgList);
                 renderCharts(imgList);
+
+                if (typeof indexData !== 'undefined' && Object.keys(indexData).length > 0) {
+                    const twii = indexData['加權指數'];
+                    const otc = indexData['櫃買指數'];
+
+                    if (twii) {
+                        document.getElementById('market-index-twii').textContent = Number(twii.close).toLocaleString();
+                        const srcDate = typeof reportDate !== 'undefined' && reportDate ? formatReportDate(reportDate) : twii.date;
+                        document.getElementById('market-index-twii-change').innerHTML = `${makeChangeHtml(twii.change, twii.pct)} &nbsp; <span class="text-xs text-gray-500">來源: ${srcDate}</span>`;
+                    }
+
+                    if (otc) {
+                        document.getElementById('market-index-otc').textContent = Number(otc.close).toLocaleString();
+                        const srcDateO = typeof reportDate !== 'undefined' && reportDate ? formatReportDate(reportDate) : otc.date;
+                        document.getElementById('market-index-otc-change').innerHTML = `${makeChangeHtml(otc.change, otc.pct)} &nbsp; <span class="text-xs text-gray-500">來源: ${srcDateO}</span>`;
+                    } else {
+                        document.getElementById('market-index-otc').textContent = '--';
+                        document.getElementById('market-index-otc-change').textContent = '資料尚未整合';
+                    }
+                }
 
                 selector.addEventListener('change', function() {
                     const selected = selector.value;
