@@ -244,6 +244,11 @@
                         </div>
                     </div>
                     <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">您的信箱（選填）</label>
+                            <input type="email" id="feedback-email" placeholder="例如：bluechip@example.com" 
+                                class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                        </div>
+                    <div>
                         <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">回饋內容</label>
                         <textarea id="feedback-content" required rows="4" placeholder="請輸入您寶貴的意見內容..." 
                             class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"></textarea>
@@ -358,6 +363,16 @@
                             </div>
                         </div>
                         <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">您的暱稱（選填）</label>
+                            <input type="text" id="feedback-name" placeholder="例如：藍色籌碼迷" 
+                                class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">您的信箱（選填）</label>
+                            <input type="email" id="feedback-email" placeholder="例如：bluechip@example.com" 
+                                class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all">
+                        </div>
+                        <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">回饋內容</label>
                             <textarea id="feedback-content" required rows="4" placeholder="請輸入您寶貴的意見內容..." class="w-full px-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"></textarea>
                         </div>
@@ -371,6 +386,7 @@
         // ⚠️ 請把下面四行引號內的內容，換成你剛剛抓到的真實 ID
         const FEEDBACK_FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScGEk19e4XAhtteDzzodpYTPNYsem7zVPd23XFvvkd7ioClIA/formResponse";
         const ENTRY_NAME = "entry.974395954";    // 對應「暱稱」的 ID
+        const ENTRY_EMAIL = "entry.556582059";   // 對應「信箱」的 ID
         const ENTRY_TYPE = "entry.950952284";    // 對應「回饋類型」的 ID
         const ENTRY_CONTENT = "entry.1168896480"; // 對應「回饋內容」的 ID
         // ─────────────────────────────────────
@@ -380,6 +396,7 @@
             
             // 抓取網頁上使用者輸入的值
             const nameValue = document.getElementById('feedback-name').value || '匿名訪客';
+            const emailValue = document.getElementById('feedback-email').value || '';
             const typeValue = document.getElementById('feedback-type').value;
             const contentValue = document.getElementById('feedback-content').value;
             
@@ -393,6 +410,7 @@
             // 打包資料
             const formData = new FormData();
             formData.append(ENTRY_NAME, nameValue);
+            formData.append(ENTRY_EMAIL, emailValue);
             formData.append(ENTRY_TYPE, typeValue);
             formData.append(ENTRY_CONTENT, contentValue);
 
