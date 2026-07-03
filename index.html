@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主動式 ETF 籌碼觀測站</title>
+    
+    <!-- 1. 核心 SEO 標題與描述 (Google 搜尋結果顯示的內容) -->
+    <title>主動式 ETF 籌碼觀測站｜每日投信持股與折溢價監控</title>
+    <meta name="description" content="全自動更新的台灣主動式 ETF 籌碼觀測站。每日盤後彙整 00981A、00403A、00400A 等主動型 ETF 投信持股異動與折溢價分析，輔助投資人掌握市場先機。">
+    <meta name="keywords" content="主動式ETF, ETF籌碼, 投信持股, 折溢價, 00981A, 00403A, 00400A, 台股觀測站, 籌碼K線">
+    <meta name="author" content="YST.Lab.ETF">
+    
+    <!-- 2. Open Graph 社群分享標籤 -->
+    <meta property="og:title" content="主動式 ETF 籌碼觀測站｜每日自動更新">
+    <meta property="og:description" content="每日盤後 18:30 自動同步最新主動式 ETF 投信持股異動與折溢價監控，免註冊免費查詢！">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://etf.98004008.xyz/">
+    <meta property="og:image" content="https://etf.98004008.xyz/og-image.png"> <!-- 預覽圖路徑 -->
+    <meta property="og:site_name" content="主動式 ETF 籌碼觀測站">
+
+    <!-- 3. Twitter Card 標籤  -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="主動式 ETF 籌碼觀測站｜每日自動更新">
+    <meta name="twitter:description" content="每日盤後 18:30 自動同步最新主動式 ETF 投信持股異動與折溢價監控。">
+    
+    <!-- 4. 其他資源引入 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="icon" href="favicon.ico" type="x-icon">
+    
+    <!-- 5. 樣式設定 -->
     <style>
         .img-fade-in {
             opacity: 0;
@@ -19,7 +41,6 @@
             max-width: min(92vw, 1200px);
         }
     </style>
-</head>
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
     <script>
         const ETF_NAME_BY_CODE = {
