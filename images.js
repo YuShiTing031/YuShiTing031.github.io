@@ -1,4 +1,5 @@
-const imgList = [];
+const imgList = ["image/20260705/report_capital_NEW_2026-07-03.png", "image/20260705/report_capital_STRONG_2026-07-03.png", "image/20260705/report_capital_USAA_2026-07-03.png", "image/20260705/report_cathay_EA_2026-07-03.png", "image/20260705/report_nomura_980A_2026-07-03.png", "image/20260705/report_nomura_985A_2026-07-03.png", "image/20260705/report_nomura_999A_2026-07-03.png", "image/20260705/report_uni_49YTW_2026-07-03.png", "image/20260705/report_uni_61YTW_2026-07-03.png", "image/20260705/report_uni_63YTW_2026-07-03.png"];
 const reportDate = '20260705';
 const indexImages = [];
 const indexData = {"加權指數": {"symbol": "tse_t00.tw", "date": "2026-07-05", "close": 46780.62, "change": 36.46, "pct": 0.08}, "櫃買指數": {"symbol": "otc_o00.tw", "date": "2026-07-05", "close": 445.38, "change": 5.87, "pct": 1.34}};
+const ETF_NAME_BY_CODE = {"49YTW": "00981A 統一台灣高息優選", "63YTW": "00403A 統一台灣動能高息", "61YTW": "00988A 統一全球創新主動式ETF基金", "EA": "00400A 國泰台股動能高息主動式ETF", "NEW": "00982A 群益台灣精選強棒主動式ETF基金", "STRONG": "00992A群益台灣精選強棒主動式ETF基金", "USAA": "00997A群益美國增長主動式ETF基金", "980A": "00980A 野村臺灣智慧優選主動式ETF", "985A": "00985A 野村臺灣增強50主動式ETF", "999A": "00999A 野村臺灣策略高息主動式ETF"};
