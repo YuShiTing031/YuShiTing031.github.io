@@ -55,23 +55,15 @@
 
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col antialiased">
     
-    <!-- JavaScript 全局對照表 -->
+    <!-- JavaScript 全局對照表（由 images.js 提供 ETF_NAME_BY_CODE） -->
     <script>
-        const ETF_NAME_BY_CODE = {
-            '49YTW': '00981A 統一台灣高息優選',
-            '63YTW': '00403A 統一台灣動能高息',
-            '61YTW': '00988A 統一全球創新主動式ETF基金',
-            'EA': '00400A 國泰台股動能高息主動式ETF',
-            'NEW': '00982A 群益台灣精選強棒主動式ETF基金',
-            'STRONG': '00992A 群益台灣精選強棒主動式ETF基金',
-            'USAA': '00997A 群益美國增長主動式ETF基金'
-        };
-
         function getEtfDisplayName(imgPath) {
             const rawFileName = imgPath.split('/').pop().replace('.png', '');
             const titleTokens = rawFileName.split('_');
             const code = titleTokens[2] || '';
-            return ETF_NAME_BY_CODE[code] || `${code || '主動式 ETF'} 主動式ETF`;
+            return (typeof ETF_NAME_BY_CODE !== 'undefined' && ETF_NAME_BY_CODE[code]) 
+                ? ETF_NAME_BY_CODE[code] 
+                : `${code || '主動式 ETF'} 主動式ETF`;
         }
     </script>
     
