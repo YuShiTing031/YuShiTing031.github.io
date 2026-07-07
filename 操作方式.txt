@@ -1,0 +1,29 @@
+你手動上傳（更新 index.html、changelog.html、json/changelog.json 等）的指令如下：
+
+---
+
+### 1️⃣ 先確認目前狀態
+
+```powershell
+git status
+```
+
+### 2️⃣ 加入你要上傳的檔案
+
+```powershell
+git add index.html changelog.html json/changelog.json
+```
+
+（可以一次加多個檔案，空格隔開）
+
+### 3️⃣ 提交
+
+```powershell
+git commit -m "手動更新：說明你改了什麼"
+```
+
+### 4️⃣ 推送（注意：不用 `-f`）
+
+```powershell
+git push origin main
+```
