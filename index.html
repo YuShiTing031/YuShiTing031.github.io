@@ -44,7 +44,6 @@
     </style>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6WFJ37639G"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -181,8 +180,12 @@
     <!-- 頁尾 (Footer) -->
     <footer class="bg-white border-t border-gray-200 py-10 text-center text-xs text-gray-400 mt-16 shadow-inner">
         <div class="max-w-5xl mx-auto px-4 space-y-4">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-gray-600 font-medium">
-                <span>📧 聯絡信箱：support@98004008.xyz</span>
+            <div class="inline-flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-gray-600 font-medium bg-gray-50/80 border border-gray-200 rounded-2xl px-6 py-4 shadow-2xs">
+                <span class="inline-flex items-center gap-1.5">📧 聯絡信箱：support@98004008.xyz</span>
+                <span class="hidden sm:inline text-gray-300">|</span>
+                <a href="changelog.html" class="inline-flex items-center gap-1.5 text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">
+                    📋 更新日誌
+                </a>
             </div>
             
             <!-- 計數器次數 -->
@@ -298,11 +301,31 @@
             </div>
         </div>
     </div>
-
     <!-- 數據引入與核心邏輯驅動 -->
-    <script src="images.js"></script>
-
     <script>
+        // 從 json/images.json 非同步載入數據
+        let imgList = [];
+        let reportDate = '';
+        let indexImages = [];
+        let indexData = {};
+        let ETF_NAME_BY_CODE = {};
+
+        async function loadImagesData() {
+            try {
+                const response = await fetch('json/images.json?v=' + Date.now());
+                const data = await response.json();
+                imgList = data.imgList || [];
+                reportDate = data.reportDate || '';
+                indexImages = data.indexImages || [];
+                indexData = data.indexData || {};
+                ETF_NAME_BY_CODE = data.ETF_NAME_BY_CODE || {};
+            } catch (err) {
+                console.warn('⚠️ 無法載入 json/images.json，使用預設空值:', err);
+            }
+            // 數據載入完成後觸發渲染
+            initPage();
+        }
+
         // ─── 💡 Google 表單參數設定區 ───
         const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScumTBfhManmj8o96GBQ25L-71Zx2tv7e1TJvvtSO22RLgE8g/formResponse";
         const GOOGLE_FORM_ENTRY_ID = "entry.1485362758"; 
@@ -607,28 +630,28 @@
             });
         }
 
-        // 頁面就緒事件
-        document.addEventListener('DOMContentLoaded', function() {
+        // 頁面初始化函式（由 loadImagesData 載入完成後呼叫）
+        function initPage() {
             const selector = document.getElementById('etf-selector');
 
-            if (typeof imgList !== 'undefined' && Array.isArray(imgList) && imgList.length > 0) {
+            if (Array.isArray(imgList) && imgList.length > 0) {
                 updateDateDisplay(reportDate);
                 populateSelector(imgList);
                 renderCharts(imgList);
 
-                if (typeof indexData !== 'undefined' && Object.keys(indexData).length > 0) {
+                if (Object.keys(indexData).length > 0) {
                     const twii = indexData['加權指數'];
                     const otc = indexData['櫃買指數'];
 
                     if (twii) {
                         document.getElementById('market-index-twii').textContent = Number(twii.close).toLocaleString();
-                        const srcDate = typeof reportDate !== 'undefined' && reportDate ? formatReportDate(reportDate) : twii.date;
+                        const srcDate = reportDate ? formatReportDate(reportDate) : twii.date;
                         document.getElementById('market-index-twii-change').innerHTML = `${makeChangeHtml(twii.change, twii.pct)} &nbsp; <span class="text-[11px] text-gray-400 font-sans">來源: ${srcDate}</span>`;
                     }
 
                     if (otc) {
                         document.getElementById('market-index-otc').textContent = Number(otc.close).toLocaleString();
-                        const srcDateO = typeof reportDate !== 'undefined' && reportDate ? formatReportDate(reportDate) : otc.date;
+                        const srcDateO = reportDate ? formatReportDate(reportDate) : otc.date;
                         document.getElementById('market-index-otc-change').innerHTML = `${makeChangeHtml(otc.change, otc.pct)} &nbsp; <span class="text-[11px] text-gray-400 font-sans">來源: ${srcDateO}</span>`;
                     } else {
                         document.getElementById('market-index-otc').textContent = '--';
@@ -647,7 +670,10 @@
                 updateDateDisplay('');
                 renderCharts([]);
             }
-        });
+        }
+
+        // 頁面就緒事件：啟動非同步載入 json/images.json
+        document.addEventListener('DOMContentLoaded', loadImagesData);
     </script>
 </body>
 </html>

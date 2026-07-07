@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YST.Lab.ETF - 更新日誌</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        /* 頁首 */
+        .header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1.5rem;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .header h1 span {
+            background: #e2e8f0;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            color: #334155;
+        }
+        .header p {
+            color: #475569;
+            margin-top: 0.25rem;
+        }
+
+        /* 時間軸卡片 */
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 0.5rem;
+        }
+        /* 左側日期與版本號 */
+        .timeline-left {
+            min-width: 110px;
+            text-align: right;
+            padding-top: 0.15rem;
+        }
+        .timeline-left .date {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            letter-spacing: 0.01em;
+        }
+        .timeline-left .version {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            background: #e2e8f0;
+            padding: 0.1rem 0.6rem;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 0.15rem;
+        }
+
+        /* 右側內容卡片 */
+        .timeline-content {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+            transition: box-shadow 0.15s;
+        }
+        .timeline-content:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .update-type {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.7rem;
+            border-radius: 20px;
+            letter-spacing: 0.01em;
+            margin-bottom: 0.5rem;
+            background: #e2e8f0;
+            color: #334155;
+        }
+        .update-type.feature { background: #dbeafe; color: #1d4ed8; }
+        .update-type.fix { background: #fee2e2; color: #b91c1c; }
+        .update-type.optimize { background: #dcfce7; color: #15803d; }
+
+        .timeline-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .timeline-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-content .detail {
+            font-size: 0.9rem;
+            color: #475569;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 0.6rem;
+            margin-top: 0.3rem;
+        }
+        /* 在 detail 中顯示標籤 */
+        .tag {
+            display: inline-block;
+            background: #f1f5f9;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.1rem 0.6rem;
+            border-radius: 12px;
+            color: #475569;
+            margin-right: 0.3rem;
+        }
+
+        /* 載入與錯誤狀態 */
+        .loading, .error {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #64748b;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #f1f5f9;
+        }
+        .error {
+            color: #b91c1c;
+            border-color: #fee2e2;
+        }
+        /* 小螢幕調整 */
+        @media (max-width: 600px) {
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.25rem;
+                margin-bottom: 1.5rem;
+            }
+            .timeline-left {
+                text-align: left;
+                min-width: unset;
+                display: flex;
+                align-items: baseline;
+                gap: 0.75rem;
+            }
+            .timeline-left .version {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 頁首 -->
+        <div class="header">
+            <h1>
+                📋 更新日誌
+                <span>v1.0</span>
+            </h1>
+            <p>YST.Lab.ETF 的每一點進展，都記錄在這裡。</p>
+        </div>
+
+        <!-- 動態載入區 -->
+        <div id="changelog-container">
+            <div class="loading">⏳ 載入更新記錄中...</div>
+        </div>
+    </div>
+
+    <script>
+        // 指定你的 JSON 檔案路徑（請根據實際位置調整）
+        const JSON_PATH = 'json/changelog.json'; 
+
+        // 若想暫時跳過 fetch，可直接將下方註解區塊的 posts 陣列取消註解，並將這行設為 true
+        const USE_LOCAL_DATA = false; 
+
+        // --- 本地測試用資料 (將 USE_LOCAL_DATA 設為 true 即可啟用) ---
+        const LOCAL_POSTS = [
+            {
+                id: 3,
+                date: "2026-07-05",
+                version: "v1.0.2",
+                type: "feature",
+                typeLabel: "✨ 新功能",
+                title: "新增 00990A 元大AI新經濟 追蹤",
+                description: "即日起，支援 00990A 的每日籌碼異動查詢。",
+                detail: "涵蓋標的已達 7 檔，持續擴大主動式 ETF 覆蓋範圍。",
+                tags: ["00990A", "AI"]
+            },
+            {
+                id: 2,
+                date: "2026-07-03",
+                version: "v1.0.1",
+                type: "optimize",
+                typeLabel: "⚡️ 優化",
+                title: "提升圖表載入速度與穩定性",
+                description: "調整圖片生成邏輯，降低延遲。",
+                detail: "同時修正了部分行動裝置的顯示問題。",
+                tags: ["效能", "Bug修復"]
+            },
+            {
+                id: 1,
+                date: "2026-07-01",
+                version: "v1.0.0",
+                type: "feature",
+                typeLabel: "🚀 正式上線",
+                title: "YST.Lab.ETF 公開測試啟動",
+                description: "首批支援 6 檔主動式 ETF 的每日籌碼報告。",
+                detail: "每天晚上 20:00 自動更新，提供折溢價觀察指引。",
+                tags: ["主動式ETF", "籌碼分析"]
+            }
+        ];
+
+        // ---------- 主要渲染邏輯 ----------
+        function renderPosts(posts) {
+            // 依 id 降序（最新在前）
+            posts.sort((a, b) => b.id - a.id);
+
+            let html = '';
+            posts.forEach(post => {
+                // 處理標籤
+                let tagsHtml = '';
+                if (post.tags && post.tags.length > 0) {
+                    tagsHtml = post.tags.map(t => `<span class="tag">#${t}</span>`).join('');
+                }
+
+                html += `
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <div class="date">${post.date}</div>
+                            <div class="version">${post.version}</div>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="update-type ${post.type || ''}">${post.typeLabel || '📌 更新'}</span>
+                            <h3>${post.title || ''}</h3>
+                            <p>${post.description || ''}</p>
+                            ${post.detail ? `<div class="detail">${post.detail} ${tagsHtml}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('changelog-container').innerHTML = html;
+        }
+
+        // ---------- 資料載入 ----------
+        if (USE_LOCAL_DATA) {
+            // 使用本地測試資料
+            renderPosts(LOCAL_POSTS);
+        } else {
+            // 從 JSON 檔案載入
+            fetch(JSON_PATH)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // 假設 JSON 是一個陣列，且每個物件都有 id, date, version, title, description 等欄位
+                    // 若你的 JSON 結構不同，請在這裡調整 mapping
+                    renderPosts(data);
+                })
+                .catch(error => {
+                    console.error('載入更新記錄失敗:', error);
+                    document.getElementById('changelog-container').innerHTML = `
+                        <div class="error">
+                            ⚠️ 無法載入更新記錄，請稍後再試。<br />
+                            <span style="font-size:0.8rem;">${error.message}</span>
+                        </div>
+                    `;
+                });
+        }
+    </script>
+</body>
+</html>
