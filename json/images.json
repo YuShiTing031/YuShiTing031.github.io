@@ -1,32 +1,32 @@
 {
   "imgList": [
-    "image/20260706/report_capital_NEW_2026-07-06.png",
-    "image/20260706/report_capital_STRONG_2026-07-06.png",
-    "image/20260706/report_capital_USAA_2026-07-06.png",
-    "image/20260706/report_cathay_EA_2026-07-06.png",
-    "image/20260706/report_nomura_980A_2026-07-06.png",
-    "image/20260706/report_nomura_985A_2026-07-06.png",
-    "image/20260706/report_nomura_999A_2026-07-06.png",
-    "image/20260706/report_uni_49YTW_2026-07-06.png",
-    "image/20260706/report_uni_61YTW_2026-07-06.png",
-    "image/20260706/report_uni_63YTW_2026-07-06.png"
+    "image/20260707/report_capital_NEW_2026-07-07.png",
+    "image/20260707/report_capital_STRONG_2026-07-07.png",
+    "image/20260707/report_capital_USAA_2026-07-07.png",
+    "image/20260707/report_cathay_EA_2026-07-07.png",
+    "image/20260707/report_nomura_980A_2026-07-07.png",
+    "image/20260707/report_nomura_985A_2026-07-07.png",
+    "image/20260707/report_nomura_999A_2026-07-07.png",
+    "image/20260707/report_uni_49YTW_2026-07-07.png",
+    "image/20260707/report_uni_61YTW_2026-07-07.png",
+    "image/20260707/report_uni_63YTW_2026-07-07.png"
   ],
-  "reportDate": "20260706",
+  "reportDate": "20260707",
   "indexImages": [],
   "indexData": {
     "加權指數": {
       "symbol": "tse_t00.tw",
-      "date": "2026-07-06",
-      "close": 46556.39,
-      "change": -224.23,
-      "pct": -0.48
+      "date": "2026-07-07",
+      "close": 45479.11,
+      "change": -1077.28,
+      "pct": -2.31
     },
     "櫃買指數": {
       "symbol": "otc_o00.tw",
-      "date": "2026-07-06",
-      "close": 439.8,
-      "change": -5.58,
-      "pct": -1.25
+      "date": "2026-07-07",
+      "close": 419.47,
+      "change": -20.33,
+      "pct": -4.62
     }
   },
   "ETF_NAME_BY_CODE": {
