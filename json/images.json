@@ -4,6 +4,12 @@
     "image/20260709/report_capital_STRONG_2026-07-09.png",
     "image/20260709/report_capital_USAA_2026-07-09.png",
     "image/20260709/report_cathay_EA_2026-07-09.png",
+    "image/20260709/report_ctbc_406A_2026-07-09.png",
+    "image/20260709/report_ctbc_983A_2026-07-09.png",
+    "image/20260709/report_ctbc_995A_2026-07-09.png",
+    "image/20260709/report_fhtrust_ETF23_2026-07-09.png",
+    "image/20260709/report_fhtrust_ETF24_2026-07-08.png",
+    "image/20260709/report_firstgold_994A_2026-07-09.png",
     "image/20260709/report_nomura_980A_2026-07-09.png",
     "image/20260709/report_nomura_985A_2026-07-09.png",
     "image/20260709/report_nomura_999A_2026-07-09.png",
@@ -12,7 +18,9 @@
     "image/20260709/report_uni_63YTW_2026-07-09.png"
   ],
   "reportDate": "20260709",
-  "indexImages": [],
+  "indexImages": [
+    "image/20260709/consensus.png"
+  ],
   "indexData": {
     "加權指數": {
       "symbol": "tse_t00.tw",
@@ -39,6 +47,14 @@
     "USAA": "00997A群益美國增長主動式ETF基金",
     "980A": "00980A 野村臺灣智慧優選主動式ETF",
     "985A": "00985A 野村臺灣增強50主動式ETF",
-    "999A": "00999A 野村臺灣策略高息主動式ETF"
-  }
+    "999A": "00999A 野村臺灣策略高息主動式ETF",
+    "ETF23": "00991A 復華台灣未來50主動式ETF基金",
+    "ETF24": "00998A 復華全球金融股票入息主動式ETF基金",
+    "994A": "00994A 第一金台股趨勢優選主動式ETF基金",
+    "995A": "00995A 中國信託台灣卓越成長主動式ETF基金",
+    "983A": "00983A 中國信託ARK創新主動式ETF基金",
+    "406A": "00406A 中國信託台灣收益成長主動式ETF基金"
+  },
+  "consensusImage": "image/20260709/consensus.png",
+  "dailySummaryImage": null
 }
