@@ -188,10 +188,10 @@
                 <span class="text-[10px] bg-purple-200/70 text-purple-700 px-2 py-0.5 rounded-sm font-mono font-bold">共識</span>
             </div>
             <div class="p-3 sm:p-5 bg-white">
-                <img id="consensus-chart-img" src="" alt="經理人共識排行榜" class="w-full h-auto rounded-xl border border-gray-50 cursor-zoom-in hover:opacity-95 transition" loading="lazy" onclick="openLightbox(this.src, '今日經理人共識排行榜')" />
+                <img id="consensus-chart-img" src="" alt="經理人共識排行榜" class="w-full h-auto rounded-xl border border-gray-50 cursor-zoom-in hover:opacity-95 transition" loading="lazy" onclick="window.open(this.src, '_blank')" />
                 <div class="mt-3.5 flex items-center justify-between text-xs text-gray-500 px-1">
                     <span class="flex items-center gap-1">💡 點擊圖片可放大與下載原始圖表</span>
-                    <button type="button" onclick="openLightbox(document.getElementById('consensus-chart-img').src, '今日經理人共識排行榜')" class="font-bold text-purple-600 hover:text-purple-700 cursor-pointer transition">🔎 放大圖片</button>
+                    <button type="button" onclick="window.open(document.getElementById('consensus-chart-img').src, '_blank')" class="font-bold text-purple-600 hover:text-purple-700 cursor-pointer transition">🔎 另開視窗</button>
                 </div>
             </div>
         </div>
@@ -616,13 +616,13 @@
                 imgElement.alt = displayTitle;
                 imgElement.className = 'w-full h-auto rounded-xl border border-gray-50 cursor-zoom-in hover:opacity-95 transition';
                 imgElement.loading = 'lazy';
-                imgElement.onclick = () => openLightbox(imgPath, displayTitle);
+                imgElement.onclick = () => window.open(imgPath, '_blank');
 
                 const actionBar = document.createElement('div');
                 actionBar.className = 'mt-3.5 flex items-center justify-between text-xs text-gray-500 px-1';
                 actionBar.innerHTML = `
                     <span class="flex items-center gap-1">💡 點擊圖片可放大與下載原始圖表</span>
-                    <button type="button" onclick="openLightbox('${imgPath}', '${displayTitle}')" class="font-bold text-blue-600 hover:text-blue-700 cursor-pointer transition">🔎 放大圖片</button>
+                    <button type="button" onclick="window.open('${imgPath}', '_blank')" class="font-bold text-blue-600 hover:text-blue-700 cursor-pointer transition">🔎 另開視窗</button>
                 `;
 
                 imgWrapper.appendChild(imgElement);
