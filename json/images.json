@@ -1,7 +1,7 @@
 {
   "imgList": [
     "image/20260709/report_capital_NEW_2026-07-10.png",
-    "image/20260709/report_capital_STRONG_2026-07-07.png",
+    "image/20260709/report_capital_STRONG_2026-07-10.png",
     "image/20260709/report_capital_USAA_2026-07-10.png",
     "image/20260709/report_cathay_EA_2026-07-09.png",
     "image/20260709/report_ctbc_406A_2026-07-09.png",
@@ -21,7 +21,22 @@
   "indexImages": [
     "image/20260709/consensus.png"
   ],
-  "indexData": {},
+  "indexData": {
+    "加權指數": {
+      "symbol": "tse_t00.tw",
+      "date": "2026-07-09",
+      "close": 45354.61,
+      "change": -379.8,
+      "pct": -0.83
+    },
+    "櫃買指數": {
+      "symbol": "otc_o00.tw",
+      "date": "2026-07-09",
+      "close": 424.99,
+      "change": 3.6,
+      "pct": 0.85
+    }
+  },
   "ETF_NAME_BY_CODE": {
     "49YTW": "00981A 統一台灣高息優選",
     "63YTW": "00403A 統一台灣動能高息",
