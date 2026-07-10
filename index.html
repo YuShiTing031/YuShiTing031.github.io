@@ -45,7 +45,7 @@
         /* ── 定位 ── */
         .fixed{position:fixed}.inset-0{inset:0}.sticky{position:sticky}.top-0{top:0}.z-50{z-index:50}.z-100{z-index:100}.z-120{z-index:120}
         /* ── 顯示 ── */
-        .flex{display:flex}.hidden{display:none}.grid{display:grid}.inline-flex{display:inline-flex}.block{display:block}
+        .flex{display:flex}.hidden{display:none}.grid{display:grid}.inline-flex{display:inline-flex}.block{display:block}.flex-1{flex:1 1 0%}
         /* ── 尺寸 ── */
         .h-12{height:3rem}.h-8{height:2rem}.h-10{height:2.5rem}.h-auto{height:auto}.h-1p5{height:.375rem}.w-12{width:3rem}.w-full{width:100%}.w-8{width:2rem}.w-10{width:2.5rem}.w-1p5{width:.375rem}.max-w-5xl{max-width:64rem}.max-w-4xl{max-width:56rem}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}
         /* ── 彈性盒子 ── */
@@ -92,9 +92,11 @@
         .backdrop-blur-md{backdrop-filter:blur(12px)}.backdrop-blur-xs{backdrop-filter:blur(4px)}
         /* ── 外邊距 ── */
         .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3p5{margin-top:.875rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-16{margin-top:4rem}.mb-1p5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mx-auto{margin-left:auto;margin-right:auto}.mx-0p5{margin-left:.125rem;margin-right:.125rem}.mt-0p5{margin-top:.125rem}
+        /* ── 排序 (order) ── */
+        .order-1{order:1}.order-2{order:2}
         /* ── 響應式 (sm:) ── */
         @media (min-width:640px){
-            .sm\\:flex{display:flex}.sm\\:hidden{display:none}.sm\\:inline{display:inline}.sm\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\\:flex-row{flex-direction:row}.sm\\:items-center{align-items:center}.sm\\:justify-end{justify-content:flex-end}.sm\\:justify-between{justify-content:space-between}.sm\\:w-auto{width:auto}.sm\\:w-64{width:16rem}.sm\\:gap-6{gap:1.5rem}.sm\\:p-5{padding:1.25rem}.sm\\:top-3{top:.75rem}.sm\\:right-3{right:.75rem}.sm\\:text-sm{font-size:.875rem;line-height:1.25rem}.sm\\:text-base{font-size:1rem;line-height:1.5rem}
+            .sm\\:flex{display:flex}.sm\\:hidden{display:none}.sm\\:inline{display:inline}.sm\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\\:flex-row{flex-direction:row}.sm\\:flex-1{flex:1 1 0%}.sm\\:items-center{align-items:center}.sm\\:justify-end{justify-content:flex-end}.sm\\:justify-between{justify-content:space-between}.sm\\:w-auto{width:auto}.sm\\:w-64{width:16rem}.sm\\:gap-6{gap:1.5rem}.sm\\:p-5{padding:1.25rem}.sm\\:top-3{top:.75rem}.sm\\:right-3{right:.75rem}.sm\\:text-sm{font-size:.875rem;line-height:1.25rem}.sm\\:text-base{font-size:1rem;line-height:1.5rem}
         }
         /* ── 懸停狀態 (hover:) ── */
         .hover\\:bg-gray-50:hover{background-color:#f9fafb}.hover\\:bg-gray-100:hover{background-color:#f3f4f6}.hover\\:bg-gray-200:hover{background-color:#e5e7eb}.hover\\:bg-blue-700:hover{background-color:#1d4ed8}.hover\\:opacity-95:hover{opacity:.95}.hover\\:text-blue-600:hover{color:#2563eb}.hover\\:text-blue-700:hover{color:#1d4ed8}.hover\\:text-gray-800:hover{color:#1f2937}.hover\\:text-purple-700:hover{color:#7e22ce}.hover\\:shadow-sm:hover{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1)}.hover\\:shadow-md:hover{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)}.hover\\:shadow-xs:hover{box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
@@ -199,13 +201,13 @@
         <!-- 市場大盤指數區塊 -->
         <div class="bg-white p-6 rounded-2xl shadow-xs border border-gray-100 mb-8">
             <h2 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2 border-b border-gray-50 pb-2">📈 市場指數</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
-                <div class="rounded-xl border border-gray-200 bg-gray-50/50 p-4 shadow-2xs hover:bg-gray-50 transition">
+            <div class="flex flex-row gap-4 text-sm text-gray-700">
+                <div class="flex-1 rounded-xl border border-gray-200 bg-gray-50/50 p-4 shadow-2xs hover:bg-gray-50 transition">
                     <p class="text-gray-500 font-medium mb-1.5">加權收盤指數</p>
                     <p id="market-index-twii" class="text-2xl font-bold text-gray-900 tracking-tight">--</p>
                     <p id="market-index-twii-change" class="text-xs text-gray-500 mt-1 font-mono">資料尚未整合</p>
                 </div>
-                <div class="rounded-xl border border-gray-200 bg-gray-50/50 p-4 shadow-2xs hover:bg-gray-50 transition">
+                <div class="flex-1 rounded-xl border border-gray-200 bg-gray-50/50 p-4 shadow-2xs hover:bg-gray-50 transition">
                     <p class="text-gray-500 font-medium mb-1.5">櫃買收盤指數</p>
                     <p id="market-index-otc" class="text-2xl font-bold text-gray-900 tracking-tight">--</p>
                     <p id="market-index-otc-change" class="text-xs text-gray-500 mt-1 font-mono">資料尚未整合</p>
