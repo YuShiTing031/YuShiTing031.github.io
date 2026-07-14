@@ -2,7 +2,7 @@
     {
     "id": 10,
     "date": "2026-07-14",
-    "version": "v1.3.1",
+    "version": "v1.2.4",
     "type": "fix",
     "typeLabel": "🐛 功能修復",
     "title": "修正國外股票單位顯示問題",
@@ -14,7 +14,7 @@
     "id": 9,
     "date": "2026-07-14",
     "version": "v1.2.3",
-    "type": "enhancement",
+    "type": "optimize",
     "typeLabel": "⚙️ 系統優化",
     "title": "CSS 獨立化與交易日抓取邏輯優化",
     "description": "將首頁所有樣式獨立為外部 CSS 檔案，並強化交易日自動判斷機制。",
